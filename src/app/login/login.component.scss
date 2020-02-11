@@ -1,0 +1,52 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    a {
+        color: white;
+        font-weight: 500;
+    }
+}
+.container {
+    width: 100%;
+    background-color: darkorange;
+    background-image: url('../../assets/1.jpg');
+}
+.card-holder {
+    min-height: calc(100vh - 70px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-card {
+    max-width: 100%;
+    min-width: 320px;
+    width: 30%;
+}
+.mat-form-field {
+    width: 100%;
+}
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: darkslateblue;
+    display: inline-block;
+    cursor: pointer;
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+    pointer-events: none;
+}
+.inputfile:foucs + label,
+.inputfile + label:hover {
+    background: indigo;
+}

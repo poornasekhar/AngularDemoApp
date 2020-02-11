@@ -1,0 +1,53 @@
+    <div class="form-group text-center" style="background-color:gainsboro;">
+        <br />
+        <label>Online voting screen</label>
+        <br />
+    </div>
+    <div>
+        <h4><marquee><span>Cast your vote online</span></marquee></h4>
+    </div>
+    <div style="background-color:blue">
+        <a class="float-right" routerLink="/login" routerLinkActive="active">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a>
+    </div>
+        <div>
+            <div class="form-group">
+                <span class="control-label col-3">Name</span>
+                <span class="control-label">Abc</span>
+            </div>
+            <div class="form-group">
+                <span class="control-label col-3">Aadhar Number</span>
+                <span class="control-label">123456123456</span>
+            </div>
+            <div class="form-group">
+                <span class="control-label col-3">Assembly Constituency</span>
+                <span class="control-label">Hitech City, Hyderabad</span>
+            </div>
+        </div>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="width5">S.No</th>
+                        <th scope="col" class="width15">Candidate Name</th>
+                        <th scope="col" class="width15">Party Name</th>
+                        <th scope="col" class="width15">Party Symbol</th>
+                        <th scope="col" class="width15">Vote</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr *ngFor="let details of partyDetails; let i=index" >
+                            <td class="width5">{{i+1}}</td>
+                            <td class="width15">{{details.candidateName}}</td>
+                            <td class="width15">{{details.partyName}}</td>
+                            <td class="width15"><img 
+                                [src]="details.partySymbol"
+                                class="avatar user-thumb" style="border-radius: 50%;width:36px" alt="avatar"></td>
+                            <td class="width15"><input type="radio" id="@d.Id" name="selectparty" value="@d.PartyName"></td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12">
+                <div class="text-right"><button type="button" (click)="submitVote()" class="btn btn-primary">Submit</button></div>
+        </div>
