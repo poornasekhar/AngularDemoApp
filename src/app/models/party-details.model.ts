@@ -3,3 +3,8 @@ export class PartyDetails{
 
     }
 }
+// export class PartyDetails{
+//     candidateName:string;
+//     partyName:string;
+//     partySymbol:string;
+// }

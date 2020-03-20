@@ -11,10 +11,15 @@ import { SignupComponent } from './signup/signup.component';
 import { Routes, RouterModule } from '@angular/router';
 import { VotingScreenComponent } from './voting-screen/voting-screen.component';
 
+import {  HttpClientModule } from '@angular/common/http';
+
+import { VoterApiService } from './services/voter-api.service';
+import { LoginActivate } from './login/login.activate';
+
 const appRoutes: Routes=[
   {path:'signup',component:SignupComponent},
   {path:'login', component:LoginComponent},
-  {path:'voting-screen',component:VotingScreenComponent}
+  {path:'voting-screen',canActivate:[LoginActivate], component:VotingScreenComponent}
 ];
 
 @NgModule({
@@ -34,9 +39,10 @@ const appRoutes: Routes=[
     RouterModule.forRoot(
       appRoutes,
       {enableTracing:true}
-    )
+    ),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [VoterApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

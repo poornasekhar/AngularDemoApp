@@ -4,28 +4,27 @@
         <a routerLink="/signup" routerLinkActive="true">Sign Up</a>
     </mat-toolbar-row>
 </mat-toolbar>
-<div class="container">
+<div class="flex-container">
     <div class="card-holder">
         <mat-card class="login-card">
             <mat-card-title>Login</mat-card-title>
             <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
                 <mat-form-field>
                     <mat-label>Aadhar number</mat-label>
-                    <input matInput placeholder="123456789000" formControlName="aadhar_no">
+                    <input matInput placeholder="xxxxxxxxxxxx" formControlName="aadhar_no">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Password</mat-label>
                     <input matInput formControlName="password" type="password">
                 </mat-form-field>
                 <input type="file" id="file" formControlName="upload_image" accept="image/*" style="width: 100%;margin-bottom: 10px;">
-                <!-- <label for="file">Choose a file</label> -->
-                <button *ngIf="!displayOTPSection" [disabled]="!loginForm.valid" mat-raised-button color="primary" (click)="isOTPSectionShow(loginForm.value)">Login</button>
+                <button *ngIf="!displayOTPSection" mat-raised-button color="primary" (click)="isOTPSectionShow(loginForm.value)">Login</button>
                 <div *ngIf="displayOTPSection">
                     <mat-form-field>
                         <mat-label>OTP</mat-label>
-                        <input matInput formControlName="otp">
+                        <input matInput formControlName="otp" required>
                     </mat-form-field>
-                    <button [disabled]="!loginForm.valid" mat-raised-button color="primary" (click)="verifyOTP(loginForm.value)">Verify</button>
+                    <button mat-raised-button color="primary" (click)="verifyOTP(loginForm.value)">Verify</button>
                 </div>
             </form>
         </mat-card>

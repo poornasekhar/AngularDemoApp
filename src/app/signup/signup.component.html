@@ -1,4 +1,4 @@
-<div class="container">
+<div class="flex-container">
     <div class="card-holder">
         <mat-card class="signup-card">
             <a href="#" class="float-right" routerLink="/login" routerLinkActive="true">Login</a>
@@ -6,7 +6,7 @@
             <form [formGroup]="signUpForm" (ngSubmit)="submit()">
                 <mat-form-field>
                     <mat-label>Aadhar number</mat-label>
-                    <input matInput placeholder="123456789000" formControlName="aadhar_no">
+                    <input matInput placeholder="xxxxxxxxxxxx" formControlName="aadhar_no">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Name (As per Aadhar)</mat-label>
@@ -29,13 +29,13 @@
                     <input matInput formControlName="confirm_password" type="password">
                 </mat-form-field>
                 <input type="file" id="file" formControlName="upload_image" accept="image/*" style="width: 100%;margin-bottom: 10px;">
-                    <button *ngIf="!displayOTPSection" [disabled]="!signUpForm.valid" mat-raised-button color="primary" (click)="isShowOTPSection(signUpForm.value)">Sign Up</button>
+                    <button *ngIf="!displayOTPSection" mat-raised-button color="primary" (click)="isShowOTPSection(signUpForm.value)">Sign Up</button>
                     <div *ngIf="displayOTPSection">
                         <mat-form-field *ngIf="displayOTPSection">
                             <mat-label>OTP</mat-label>
                             <input matInput formControlName="otp">
                         </mat-form-field>
-                        <button [disabled]="!signUpForm.valid" mat-raised-button color="primary">Verify</button>
+                        <button mat-raised-button color="primary" (click)="verifyOTP(signUpForm.value)">Verify</button>
                     </div>
             </form>
         </mat-card>
