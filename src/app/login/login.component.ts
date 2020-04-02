@@ -16,6 +16,7 @@ import { TokenService } from '../token.service';
 export class LoginComponent implements OnInit,CanActivate {
   formModel=new LoginModel();
   displayOTPSection=false;
+  displaySpinner=false;
   formBuilder = new FormBuilder();
   loginForm = this.formBuilder.group({
     aadhar_no: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(12)]],
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit,CanActivate {
   ngOnInit() {    
   }
 
-  submit() {    
+  submit(form:any) {    
   }
 
   canActivate(route: ActivatedRouteSnapshot,state:RouterStateSnapshot): Observable<boolean>|Promise<boolean>| boolean{
@@ -44,10 +45,12 @@ export class LoginComponent implements OnInit,CanActivate {
     }
     this.formModel.AadharNumber=Number(form.aadhar_no);
     this.formModel.Password=form.password;
+    this.displaySpinner=true;
     this._voterApiService.validateLogin(this.formModel)
     .subscribe(
       data=>
       {
+        this.displaySpinner=false;
         if(!data.isSuccess){
          swal.fire("",data.message,"error");
           return false;
@@ -69,10 +72,12 @@ export class LoginComponent implements OnInit,CanActivate {
       return false;
     }
     this.formModel.ValidateVotingOtp=Number(form.otp);
+    this.displaySpinner=true;
     this._voterApiService.validateLoginOTP(this.formModel)
     .subscribe(
       data=>
       {
+        this.displaySpinner=false;
         if(!data.isSuccess){
          swal.fire("",data.message,"error");
           return false;

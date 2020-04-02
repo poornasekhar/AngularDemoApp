@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   formModel=new SignUpModel();
   displayOTPSection:boolean=false;
+  displaySpinner:boolean=false;
   formBuilder = new FormBuilder();
   signUpForm = this.formBuilder.group({
     aadhar_no:['',[Validators.required,Validators.minLength(12),Validators.maxLength(12)]],
@@ -48,10 +49,12 @@ export class SignupComponent implements OnInit {
     this.formModel.PhoneNumber=Number(form.phone);
     this.formModel.EmailAddress=form.email;    
     this.formModel.Password=form.password;
+    this.displaySpinner=true;
     this._voterApiService.validateSignUp(this.formModel)
     .subscribe(
       data=>
       {
+        this.displaySpinner=false;
         if(!data.isSuccess){
          swal.fire("",data.message,"error");
           return false;
@@ -77,10 +80,12 @@ export class SignupComponent implements OnInit {
       return false;
     }
     this.formModel.Otp=Number(form.otp);
+    this.displaySpinner=true;
     this._voterApiService.validateSignUpOTP(this.formModel)
     .subscribe(
       data=>
       {
+        this.displaySpinner=false;
         if(!data.isSuccess){
          swal.fire("",data.message,"error");
           return false;

@@ -4,7 +4,8 @@
         <a routerLink="/signup" routerLinkActive="true">Sign Up</a>
     </mat-toolbar-row>
 </mat-toolbar>
-<div class="flex-container">
+<mat-spinner *ngIf="displaySpinner"></mat-spinner>
+<div class="flex-container" *ngIf="!displaySpinner">
     <div class="card-holder">
         <mat-card class="login-card">
             <mat-card-title>Login</mat-card-title>

@@ -1,6 +1,7 @@
 <div class="flex-container">
     <div class="card-holder">
-        <mat-card class="signup-card">
+        <mat-spinner *ngIf="displaySpinner"></mat-spinner>
+        <mat-card class="signup-card" *ngIf="!displaySpinner">
             <a href="#" class="float-right" routerLink="/login" routerLinkActive="true">Login</a>
             <mat-card-title>Sign Up</mat-card-title>
             <form [formGroup]="signUpForm" (ngSubmit)="submit()">

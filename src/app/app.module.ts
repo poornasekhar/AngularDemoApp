@@ -15,6 +15,7 @@ import {  HttpClientModule } from '@angular/common/http';
 
 import { VoterApiService } from './services/voter-api.service';
 import { LoginActivate } from './login/login.activate';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 const appRoutes: Routes=[
   {path:'signup',component:SignupComponent},
@@ -36,6 +37,7 @@ const appRoutes: Routes=[
     MaterialImportModule,
     ReactiveFormsModule,
     FormsModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing:true}
